@@ -1,0 +1,192 @@
+/* ==========================================================================
+   1. RESET & BOX-MODEL DEFINITION
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box; /* Ensures padding and border don't increase element width */
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   2. GLOBAL DEFAULTS (Typography & Smooth Behavior)
+   ========================================================================== */
+html {
+    font-size: 16px; /* Base size for rem calculations */
+    scroll-behavior: smooth; /* Smooth scrolling when clicking internal anchor links */
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Crisp text rendering on macOS/iOS */
+    background-color: #ffffff;
+    color: #333333;
+    min-height: 100vh; /* Ensures full viewport height coverage */
+}
+
+/* ==========================================================================
+   3. MEDIA & CONTENT ELEMENTS
+   ========================================================================== */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%; /* Prevents images from overflowing containers */
+    height: auto; /* Maintains original aspect ratios */
+}
+
+/* Inherit fonts for form inputs naturally */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Remove default list styling when used as structural wrappers */
+ul, ol {
+    list-style: none;
+}
+
+/* Clean up default link underlines */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   4. UTILITY CLASSES (Optional but highly useful)
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.dashboard {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.controls input, .controls select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  flex: 1;
+  min-width: 200px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th, .data-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Button variants */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary { background: #2563eb; color: #fff; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-secondary { background: #e2e8f0; color: #334155; }
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-info { background: #0ea5e9; color: #fff; }
+.btn-warning { background: #f59e0b; color: #fff; }
+.btn-danger { background: #ef4444; color: #fff; }
+
+/* Native Dialog styles */
+dialog {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+dialog input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.details-content p {
+  margin: 0.5rem 0;
+}

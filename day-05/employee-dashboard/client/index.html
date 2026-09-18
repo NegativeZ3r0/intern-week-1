@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container dashboard">
+    <header class="dashboard-header">
+      <h1>Employee Directory</h1>
+      <button id="add-btn" class="btn btn-primary">+ Add Employee</button>
+    </header>
+
+    <!-- Toolbar: Search, Filter, Sort -->
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Search by name or role..." />
+
+      <select id="filter-dept">
+        <option value="">All Departments</option>
+      </select>
+
+      <select id="sort-by">
+        <option value="name-asc">Sort: Name (A-Z)</option>
+        <option value="name-desc">Sort: Name (Z-A)</option>
+        <option value="salary-asc">Sort: Salary (Low to High)</option>
+        <option value="salary-desc">Sort: Salary (High to Low)</option>
+      </select>
+    </section>
+
+    <!-- Data Table -->
+    <section class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employee-table-body">
+          <!-- Populated by script.js -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Modal: Add / Edit Form -->
+  <dialog id="employee-dialog">
+    <form id="employee-form" method="dialog">
+      <h2 id="modal-title">Add Employee</h2>
+      <input type="hidden" id="emp-id" />
+
+      <label for="emp-name">Name</label>
+      <input type="text" id="emp-name" required />
+
+      <label for="emp-email">Email</label>
+      <input type="email" id="emp-email" required />
+
+      <label for="emp-department">Department</label>
+      <input type="text" id="emp-department" required />
+
+      <label for="emp-role">Role</label>
+      <input type="text" id="emp-role" required />
+
+      <label for="emp-salary">Salary (Rs)</label>
+      <input type="number" id="emp-salary" required min="0" />
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="dialog-cancel-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: View Details -->
+  <dialog id="details-dialog">
+    <div class="details-content">
+      <h2>Employee Details</h2>
+      <div id="details-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="details-close-btn">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
