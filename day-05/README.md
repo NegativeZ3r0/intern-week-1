@@ -21,7 +21,7 @@ sigle route: `/api/employees` or `/api/employees/`
 
 ## Usage
 after following installation steps, run following command from the working directory
-for running backend script on port localhost:5069
+for running backend script on localhost:5069
 ```bash
 node server/server.js
 ```
