@@ -8,8 +8,7 @@ visualization.
 # Problem Statement
 Produce a cleaned dataset, analysis notebook/scripts, visualizations and a README explaining findings.
 
-# Findings
-## Comprehensive Findings & Conclusions
+# Finding
 
 Having thoroughly analyzed the cleaned `facility_hygiene_ml_dataset_cleaned.xlsx` dataset, I can draw the following key conclusions:
 
