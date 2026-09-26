@@ -2,3 +2,4 @@ students.csv
 employees.csv
 .~lock.*
 .venv
+__pycache__

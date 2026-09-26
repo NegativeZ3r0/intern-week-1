@@ -26,6 +26,6 @@ def load_and_preprocess(file_path):
     X_scaled = scaler.fit_transform(X) #[cite: 1]
 
     # Train/Test Split
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_encoded, test_size=0.2, random_state=42) #[cite: 1]
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_encoded, test_size=0.25, random_state=35) #[cite: 1]
 
     return X_train, X_test, y_train, y_test, class_names, features
