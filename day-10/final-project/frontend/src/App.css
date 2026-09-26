@@ -1,0 +1,112 @@
+:root {
+  --bg-color: #1a1a1a;
+  --card-bg: #1e1e1e;
+  --input-bg: #2d2d33;
+  --text-main: #f8f8f2;
+  --primary-color: #1d4ed8;
+  --primary-hover: #1e40af;
+  --border-color: #3f3f46;
+  --font-mono: 'Courier New', Courier, monospace;
+  --radius: 4px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.app-container {
+  background: var(--card-bg);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.app-title {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.prediction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  text-align: center; /* Centers label above input */
+}
+
+.form-input {
+  background-color: var(--input-bg);
+  color: var(--text-main);
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #52525b;
+}
+
+
+
+.submit-btn {
+  margin-top: 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result-box {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-main);
+  text-align: center;
+}
+
+.error-box {
+  border-color: #ef4444;
+  color: #fca5a5;
+}
