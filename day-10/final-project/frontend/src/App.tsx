@@ -71,7 +71,7 @@ function App() {
 
       const data = await response.json();
       setPrediction(data.predicted_hygiene_risk);
-    } catch (err) {
+    } catch (err: any) {
       console.error("API Error:", err);
       setError(err.message || "Error generating prediction");
     } finally {
