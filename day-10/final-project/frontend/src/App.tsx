@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 interface FacilityFormState {
@@ -20,6 +20,14 @@ const fieldConfig: Record<keyof FacilityFormState, { label: string; min: number;
 };
 
 function App() {
+  // Theme State: Check system preference on initial load
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
   const [formData, setFormData] = useState<FacilityFormState>({
     cleanliness_score: '5.0',
     odor_score: '5.0',
@@ -32,6 +40,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Apply data-theme to the document root whenever isDark changes
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, [isDark]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -40,7 +57,7 @@ function App() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -79,47 +96,71 @@ function App() {
     }
   };
 
+  // NEW: Helper function to determine the color class safely
+  // checking for keywords in case the API returns "Low Risk", etc.
+  const getRiskClass = (pred: string) => {
+    const lowerPred = pred.toLowerCase();
+    if (lowerPred.includes('low')) return 'low';
+    if (lowerPred.includes('medium')) return 'medium';
+    if (lowerPred.includes('high')) return 'high';
+    return ''; // Fallback to default blue if unknown
+  };
+
   return (
-    <div className="app-container">
-      <h2 className="app-title">Hygiene Risk Predictor</h2>
-
-      <form onSubmit={handleSubmit} className="prediction-form">
-        {(Object.keys(fieldConfig) as Array<keyof FacilityFormState>).map((key) => {
-          const config = fieldConfig[key];
-          return (
-            <div key={key} className="form-group">
-              <label className="form-label">{config.label}</label>
-              <input
-                type="number"
-                name={key}
-                min={config.min}
-                max={config.max}
-                step={config.step}
-                value={formData[key]}
-                onChange={handleChange}
-                required
-                className="form-input"
-              />
-            </div>
-          );
-        })}
-
-        <button type="submit" disabled={loading} className="submit-btn">
-          {loading ? "Predicting..." : "Predict Risk"}
-        </button>
-      </form>
-
-      {error && (
-        <div className="result-box error-box">
-          {error}
+    <div className="page-wrapper">
+      <div className="app-container">
+        <div className="app-header">
+          <h2 className="app-title">Hygiene Risk Predictor</h2>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setIsDark(!isDark)}
+            aria-label="Toggle Dark Mode"
+            title="Toggle Theme"
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
         </div>
-      )}
 
-      {prediction && (
-        <div className="result-box">
-          Prediction: {prediction}
-        </div>
-      )}
+        <form onSubmit={handleSubmit} className="prediction-form">
+          {(Object.keys(fieldConfig) as Array<keyof FacilityFormState>).map((key) => {
+            const config = fieldConfig[key];
+            return (
+              <div key={key} className="form-group">
+                <label className="form-label">{config.label}</label>
+                <input
+                  type="number"
+                  name={key}
+                  min={config.min}
+                  max={config.max}
+                  step={config.step}
+                  value={formData[key]}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </div>
+            );
+          })}
+
+          <button type="submit" disabled={loading} className="submit-btn">
+            {loading ? "Predicting..." : "Predict Risk"}
+          </button>
+        </form>
+
+        {error && (
+          <div className="result-box error-box">
+            {error}
+          </div>
+        )}
+
+        {prediction && (
+          /* UPDATED: Apply dynamic class based on prediction value */
+          <div className={`result-box ${getRiskClass(prediction)}`}>
+            Prediction: {prediction}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
