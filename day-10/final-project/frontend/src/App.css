@@ -1,90 +1,91 @@
+/* Define theme variables for consistent styling and easy global updates */
 :root {
-  --bg-color: #1a1a1a;
-  --card-bg: #1e1e1e;
-  --input-bg: #2d2d33;
-  --text-main: #f8f8f2;
-  --primary-color: #1d4ed8;
-  --primary-hover: #1e40af;
-  --border-color: #3f3f46;
-  --font-mono: 'Courier New', Courier, monospace;
-  --radius: 4px;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius: 8px;
 }
 
+/* Base reset and layout */
 body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: var(--font-mono);
+  font-family: system-ui, -apple-system, sans-serif;
   display: flex;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 2rem;
 }
 
+/* Main application container */
 .app-container {
   background: var(--card-bg);
-  padding: 2.5rem 2rem;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
+  max-width: 450px;
 }
 
 .app-title {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--text-main);
-  font-size: 1.25rem;
-  font-weight: normal;
+  font-size: 1.5rem;
   text-align: center;
-  letter-spacing: 0.5px;
 }
 
+/* Form layout using Flexbox */
 .prediction-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .form-label {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--text-main);
-  text-align: center; /* Centers label above input */
+  text-transform: capitalize;
 }
 
+/* Input state management */
 .form-input {
-  background-color: var(--input-bg);
-  color: var(--text-main);
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #52525b;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-
-
+/* Button state management */
 .submit-btn {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   background-color: var(--primary-color);
   color: white;
-  padding: 0.75rem;
+  padding: 0.875rem;
   border: none;
   border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
 .submit-btn:hover:not(:disabled) {
@@ -92,21 +93,18 @@ body {
 }
 
 .submit-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
+/* Results display */
 .result-box {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding: 1rem;
-  background-color: var(--input-bg);
-  border: 1px solid var(--border-color);
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
   border-radius: var(--radius);
-  color: var(--text-main);
+  color: #1e3a8a;
   text-align: center;
-}
-
-.error-box {
-  border-color: #ef4444;
-  color: #fca5a5;
+  font-size: 1.1rem;
 }
