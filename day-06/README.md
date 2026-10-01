@@ -159,7 +159,7 @@ Open `http://localhost:5173` in your browser.
 
 | Dashboard Overview & Metrics | Add/Edit Employee Modal |
 | --- | --- |
-| ** | ** |
+| *![Dashboard screenshot](image.png)* | *![Add employee form](image_1.png)* |
 
 ---
 
