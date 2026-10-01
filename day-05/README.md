@@ -31,6 +31,12 @@ python -m http.server -d client/ -b 127.0.0.1 4069
 ```
 access frontend on http://127.0.0.1:4069/ in browser
 
+## Screenshots
+
+| Dashboard Overview | Edit Employee Modal |
+| --- | --- |
+| *![Dashboard](image.png)* | *![edit form](image_1.png)* |
+
 ## Challenges faced
 - dealing with CORS errors
 
